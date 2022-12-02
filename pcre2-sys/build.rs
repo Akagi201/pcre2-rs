@@ -13,6 +13,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let bindings = bindgen::Builder::default()
         .header("include/wrapper.h")
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        .raw_line("#![allow(clippy::all)]")
+        .raw_line("#![allow(non_camel_case_types)]")
         .derive_debug(true)
         .derive_eq(true)
         .ctypes_prefix("::libc")
