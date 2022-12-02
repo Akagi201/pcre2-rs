@@ -1,29 +1,18 @@
 # pcre2-rs
 
-## TODOs
-- [ ] use bindgen crate.
-- [ ] cmake not cc to build the clib.
-- [ ] use libc crate not core::ffi.
+Now, only tested on linux, can be easily ported to macOS and windowns.
 
-## 题意
+## Build Steps
 
-- 使用 rust/go 语言调用 pcre2 (源码地址：https://github.com/PhilipHazel/pcre2)，必须亲自动手使用 FFI 绑定 C 接口，不得使用现成的三方库
-- 从 **目标文本** 中筛选出符合 **筛选规则** 的 **结果字符串**，
-- 将 **结果字符串** 发送给一个 bash 脚本，
-- 在这个 bash 脚本中接收并打印接收到的结果，
-- 转输过程中要求使用 UDP 协议。
-
-## 目标文本
+1. build pcre2 library
 
 ```sh
-"a;jhgoqoghqoj0329 u0tyu10hg0h9Y0Y9827342482y(Y0y(G)_)lajf;lqjfgqhgpqjopjqa=)*(^!@#$%^&*())9999999"
+git clone https://github.com/PCRE2Project/pcre2.git # or download a release version
+cd pcre2
+mkdir build
+cd build
+cmake -DBUILD_STATIC_LIBS=on -DPCRE2_STATIC_PIC=on ..
+make
+# copy pcre2.h to ./pcre2-sys/include
+# copy libpcre2-8.a to ./pcre2-sys/lib
 ```
-
-## 筛选规则
-
-1. **结果字符串** 自身不包含数字和任何类型的空白字符（如空格、回车等等），其长度为 3 至 11 个字符
-2. **结果字符串** 左侧相邻的字符串是4个数字
-3. **结果字符串** 右侧相邻的字符串不为空
-4. 正则匹配的次数越少越好，尽可能只使用一个正则表达式
-
-注：以上 4 条规则须同时满足。

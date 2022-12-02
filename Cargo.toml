@@ -1,5 +1,5 @@
 [workspace]
 members = [
-    "pcre2",
+    "pcre2-sys",
     "processor",
 ]
