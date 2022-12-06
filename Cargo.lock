@@ -159,6 +159,9 @@ dependencies = [
 [[package]]
 name = "processor"
 version = "0.1.0"
+dependencies = [
+ "pcre2-sys",
+]
 
 [[package]]
 name = "quote"
