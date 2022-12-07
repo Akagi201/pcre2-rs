@@ -18,7 +18,7 @@ In terminal one:
 
 ```sh
 cd scripts
-./udplog.sh
+./udplog.sh 8327
 ```
 
 In terminal two:
