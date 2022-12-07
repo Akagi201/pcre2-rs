@@ -72,9 +72,9 @@ impl Regex {
             panic!("could not get ovector");
         }
         Ok(Regex {
-            code: code,
-            match_data: match_data,
-            ovector: ovector,
+            code,
+            match_data,
+            ovector,
         })
     }
 
@@ -85,7 +85,7 @@ impl Regex {
     pub fn find_iter<'r, 't>(&'r self, text: &'t str) -> FindMatches<'r, 't> {
         FindMatches {
             re: self,
-            text: text,
+            text,
             last_match_end: 0,
         }
     }
