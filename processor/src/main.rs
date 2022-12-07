@@ -21,7 +21,8 @@ fn main() {
     let cli = Cli::parse();
     println!("Send udp result to {}:{}", cli.addr, cli.port);
     let target = r"a;jhgoqoghqoj0329 u0tyu10hg0h9Y0Y9827342482y(Y0y(G)_)lajf;lqjfgqhgpqjopjqa=)*(^!@#$%^&*())9999999";
-    let pattern = r"(?<=\d{4})[^\d\s]{3,11}(?=.)";
+    // Use Positive Lookbehind (?<=) and Positive Lookahead (?=)
+    let pattern = r"(?<=\d{4})[^\d\s]{3,11}(?=\S)";
     // We use port 0 to let the operating system allocate an available port for us.
     let local_addr: SocketAddr = "0.0.0.0:0".parse().expect("Could not parse local address");
     let socket = UdpSocket::bind(local_addr).expect("Could not bind server!");
