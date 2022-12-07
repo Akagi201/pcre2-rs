@@ -8,7 +8,25 @@ Now, only tested on linux, can be easily ported to macOS and windowns.
 
 * [pcre2-sys](pcre2-sys) - Rust bindings for PCRE2.
 * [processor](processor) - Rust regex processor program.
-* [udplog](scripts/udplog.sh) - Shell UDP log receiver.
+* [udplog](scripts/udplog.sh) - Shell UDP log receiver, depends on `openbsd-netcat`.
+
+## Usage
+
+First you must be in a linux system.
+
+In terminal one:
+
+```sh
+cd scripts
+./udplog.sh
+```
+
+In terminal two:
+
+```sh
+cd processor
+cargo run
+```
 
 ## How to build the pcre2 static clib
 
