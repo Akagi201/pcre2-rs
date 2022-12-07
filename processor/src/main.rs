@@ -2,7 +2,7 @@ mod pcre2;
 use pcre2::*;
 
 fn print_matched(target: &str, begin: usize, end: usize) {
-    println!("{}: {}", begin, end);
+    println!("{begin}: {end}");
     println!("  {}", &target[begin..end]);
 }
 

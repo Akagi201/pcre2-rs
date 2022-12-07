@@ -109,7 +109,7 @@ impl Regex {
         if err == PCRE2_ERROR_NOMATCH {
             None
         } else if err < 0 {
-            panic!("unknown error code: {:?}", err)
+            panic!("unknown error code: {err:?}");
         } else {
             Some(unsafe { (*self.ovector, *self.ovector.offset(1)) })
         }
