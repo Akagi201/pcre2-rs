@@ -7,5 +7,5 @@ edition = "2021"
 
 [dependencies]
 clap = { version = "4.1.6", features = ["derive"] }
-libc = "0.2.138"
+libc = "0.2.142"
 pcre2-sys = { path = "../pcre2-sys" }
